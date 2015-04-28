@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Pessoa {
 	
-	private String nomeeeeeee;
+	private String nome;
 	
 	private Date dataNascimento;
 

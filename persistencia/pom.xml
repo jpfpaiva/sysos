@@ -39,6 +39,13 @@
 	</build>
 	
 	<dependencies>
+		
+		<!-- Domínio  -->
+		<dependency>
+			<groupId>paivaltda.app</groupId>
+			<artifactId>dominio</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	
 		<!-- PostgreSQL JDBC 4.1 / Java 1.7 e 1.8 -->
 		<dependency>
@@ -72,7 +79,7 @@
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>4.3.10.Final</version>
 		</dependency>
-	
+
 	</dependencies>
 	
 </project>

@@ -7,7 +7,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>dominio</module>
 		<module>persistencia</module>
 		<module>servico</module>
 		<module>web</module>

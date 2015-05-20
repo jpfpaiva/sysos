@@ -33,7 +33,7 @@ public class DatasourcePostgresqlConfig extends DataSourceConfig {
 		
 		datasource.setDriverClass("org.postgresql.Driver"); 
 		
-		datasource.setJdbcUrl("jdbc:postgresql://localhost:5432/spk");
+		datasource.setJdbcUrl("jdbc:postgresql://localhost:5432/sysos");
 		datasource.setUser("postgres");
 		datasource.setPassword("123456");
 		

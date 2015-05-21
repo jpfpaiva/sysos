@@ -20,14 +20,13 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 	
 public abstract class DataSourceConfig {
 
-	
 	private static final Logger log = Logger.getLogger(DataSourceConfig.class);
-
+	
 	// EntityManagerFactory
 	@Bean
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource, JpaConfig jpaConfig) throws SQLException {
 		
-		log.info(" Inicializando Bean EntityManager Factory ... ");
+		log.info("\n Inicializando Bean EntityManager Factory ... \n");
 
 		// Provedor JPA - Neste caso o Hibernate
 		HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
@@ -35,7 +34,7 @@ public abstract class DataSourceConfig {
 		jpaVendorAdapter.setShowSql(jpaConfig.isShowSQL());
 		jpaVendorAdapter.setDatabasePlatform(jpaConfig.getDialect());
 
-		// Configura��es adicionais da JPA
+		// Configuracoes adicionais da JPA
 		Properties configJpaHibernate = new Properties();
 		configJpaHibernate.put("hibernate.hbm2ddl.auto", jpaConfig.getAutoCreate());
 		configJpaHibernate.put("hibernate.format_sql", jpaConfig.isFormatSQL());
@@ -54,7 +53,8 @@ public abstract class DataSourceConfig {
 	}
 	
 	
-	protected ComboPooledDataSource getDataSourceDefault() {
+	public ComboPooledDataSource getDataSourceDefault() {
+		log.info("\n Inicializando Bean C3p0 ... \n");
 		return new ComboPooledDataSource();
 	}
 
@@ -62,7 +62,7 @@ public abstract class DataSourceConfig {
 	// EntityManger - save, merge, update, delete
 	@Bean
 	public EntityManager entityManager(EntityManagerFactory entityManagerFactory) throws SQLException {
-		log.info(" Inicializando Bean EntityManager ... ");
+		log.info("\n Inicializando Bean EntityManager ... ");
 		return entityManagerFactory.createEntityManager();
 	}
 
@@ -70,7 +70,7 @@ public abstract class DataSourceConfig {
 	// @Transaction
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) throws SQLException {
-		log.info(" Inicializando Bean Transaction ... ");
+		log.info("\n Inicializando Bean Transaction ... ");
 		return new JpaTransactionManager(entityManagerFactory);
 	}
 
@@ -78,7 +78,7 @@ public abstract class DataSourceConfig {
 	// Exception Hibernate Translator do Spring
 	@Bean
 	public HibernateExceptionTranslator hibernateExceptionTranslator() {
-		log.info(" Inicializando Bean Hibernate Exception ... ");
+		log.info("\n Inicializando Bean Hibernate Exception ... ");
 		return new HibernateExceptionTranslator();
 	}
 	

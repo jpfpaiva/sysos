@@ -1,4 +1,4 @@
-package sysos.dominio.entidade;
+package sysos.persistencia.entidade;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

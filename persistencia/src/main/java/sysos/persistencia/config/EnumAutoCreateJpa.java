@@ -7,14 +7,14 @@ public enum EnumAutoCreateJpa {
     CREATE ("create"),
     CREATE_DROP ("create-drop");
     
-    private EnumAutoCreateJpa(String descricao) {
-            this.descricao = descricao;
+    private EnumAutoCreateJpa(String valor) {
+            this.valor = valor;
     }
 
-    private String descricao;
+    private String valor;
     
-    public String getDescricao() {
-            return descricao;
+    public String getValor() {
+    	return valor;
     }
 
 }

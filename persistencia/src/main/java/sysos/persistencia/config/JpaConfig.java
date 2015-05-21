@@ -4,7 +4,7 @@ package sysos.persistencia.config;
 
 public class JpaConfig {
 	
-	 private String dialect;
+	 private EnumJpaDialect dialect;
      
      private boolean formatSQL;
      
@@ -17,10 +17,10 @@ public class JpaConfig {
      private EnumAutoCreateJpa autoCreate;
 
      public String getDialect() {
-             return dialect;
+             return dialect.getValor();
      }
 
-     public void setDialect(String dialect) {
+     public void setDialect(EnumJpaDialect dialect) {
              this.dialect = dialect;
      }
 
@@ -41,7 +41,7 @@ public class JpaConfig {
      }
 
      public String getAutoCreate() {
-             return autoCreate.getDescricao();
+             return autoCreate.getValor();
      }
 
      public void setAutoCreate(EnumAutoCreateJpa enumAutoCreateJpa) {

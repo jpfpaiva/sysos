@@ -1,4 +1,4 @@
-package sysos.dominio.entidade;
+package sysos.persistencia.entidade;
 
 import java.util.Set;
 

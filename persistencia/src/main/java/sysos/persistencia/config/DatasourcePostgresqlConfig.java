@@ -4,6 +4,7 @@ import java.beans.PropertyVetoException;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +25,14 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class DatasourcePostgresqlConfig extends DataSourceConfig {
 	
+	private static final Logger log = Logger.getLogger(DatasourcePostgresqlConfig.class);
+	
+	private static final String PACOTE_ENTIDADE_JPA = "sysos.persistencia.entidade";
 	
 	@Bean
 	public DataSource getDataSourcePostgresSQL() throws PropertyVetoException {
 		
+		log.info("\n Inicializando Bean DataSource Postgresql ... \n");
 		
 		ComboPooledDataSource datasource = getDataSourceDefault();
 		
@@ -56,19 +61,20 @@ public class DatasourcePostgresqlConfig extends DataSourceConfig {
         return datasource;
 	}
 	
-	
 	@Bean
 	public JpaConfig getJpaPostgresqlConfig() {
 		
+		log.info("\n Inicializando Bean JpaConfig ... \n");
+		
 		 JpaConfig jpaVendor = new JpaConfig();
-         jpaVendor.setDialect("org.hibernate.dialect.PostgreSQLDialect");  // org.hibernate.dialect.Oracle10gDialect; org.hibernate.dialect.OracleDialect 
-         jpaVendor.setPacoteRaizEntidades("sysos.dominio.entidade");  // Entidades JPA - aceita vários valores
-         jpaVendor.setAutoCreate(EnumAutoCreateJpa.VALIDATE);
+         jpaVendor.setDialect(EnumJpaDialect.POSTGRESQL); 
+         jpaVendor.setPacoteRaizEntidades(PACOTE_ENTIDADE_JPA); 
+         jpaVendor.setAutoCreate(EnumAutoCreateJpa.CREATE);
          jpaVendor.setFormatSQL(false);
          jpaVendor.setShowSQL(false);
          jpaVendor.setGerarDDL(false);
          
          return jpaVendor;
 	}
-
+	
 }

@@ -51,11 +51,27 @@ public class Boot implements CommandLineRunner {
 		userDao.save(user);
 		
 		for (UsuarioSistema u : userDao.findAll(qUser.nome.containsIgnoreCase("dan"))) {
-			System.out.println(" Nome: " + u.getNome());
+			
+			System.out.println("\n\n Nome: " + u.getNome());
 			System.out.println(" SobreNome: " + u.getSobrenome());
 			System.out.println(" Senha: " + u.getSenhaHash());
-			System.out.println(" Email: " + u.getEmail());
+			System.out.println(" Email: " + u.getEmail() + "\n\n");
+			
+			
+			u.setSobrenome("Sava");
+			
+			userDao.save(u);
+			
+			System.out.println("\n\n Nome: " + u.getNome());
+			System.out.println(" SobreNome: " + u.getSobrenome());
+			System.out.println(" Senha: " + u.getSenhaHash());
+			System.out.println(" Email: " + u.getEmail() + "\n\n");
+			
 		}
+		
+		
+		
+		
 		
 		
 		

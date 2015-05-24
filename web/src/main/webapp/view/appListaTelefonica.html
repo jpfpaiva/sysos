@@ -1,0 +1,139 @@
+<html ng-app="listaTelefonica">
+	
+	<head>
+		<title>Lista Telefônica</title>
+		
+		<link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.css">
+		
+		<style>
+		
+			.jumbotron {
+				width: 400px;
+				padding: 48px 10;
+				text-align: center;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.table {
+				margin-top: 20px;
+			}
+			
+			.form-control {
+				margin-bottom: 5px;
+			}
+			
+			.negrito {
+				color: blue;
+			}
+			
+		</style>
+		
+		<script src="../lib/angular/angular.js">
+			// O ng-controller faz o vínculo entre a view e o controle. E dessa relação nasce o $scope
+			// O ng-route tem função parecida com o ng-controller.
+			// A View não é, necessariamente, um arquivo html. View, para o AngularJS, poder uma tag ou um conjunto de tag´s do html.
+			// O ng-bind substitui um elemento por uma expressão. Pega alguma coisa do scope e exibi
+			// O ng-repeat itera sobre os itens de uma coleção ou de um objeto
+			// O ng-model vincula uma propriedade ao $scope. Ele faz o inverso do ng-bind (controler->visão), pois o ng-bind é visão->controler
+			// 		Ou seja, o ng-model pega alguma coisa da view e define no scope, colocar no scope.
+			//		O ng-model é, basicamente, colocado nos input, select, textarea.
+			// Eventos
+			//		ng-clik
+			//		ng-blur
+			//		ng-focus
+			// Estudar sobre os módulos do Angular:
+			//	- ng-table
+			//	- ng-grid
+			//	- ng-animation
+			// ng-disabled - desabilita um elemento dinamicamente
+			// ng-options - renderiza as opções de um select num table
+			// ng-class e ng-style aplica dinamicamente classes e estilos css
+			//
+			
+		</script>
+		
+		<script>
+		
+			var app = angular.module("listaTelefonica", []);
+			
+			app.controller("listaTelefonicaController", function ($scope) {				
+
+				$scope.app = "Lista Telefônica";
+	
+				$scope.contatos = [
+					{nome: "Daniel", telefone: 99816300},
+					{nome: "Luciana", telefone: 99586300},
+					{nome: "Guilherme", telefone: 99836300},
+					{nome: "Leonardo", telefone: 99826300}
+				];
+	
+				$scope.operadoras = [
+					{nome: "Oi", codigo: 14, categoria: "Celular"},
+					{nome: "Vivo", codigo: 15, categoria: "Celular"},
+					{nome: "Tim", codigo: 41, categoria: "Celular"},
+					{nome: "GVT", codigo: 25, categoria: "Fixo"},
+					{nome: "Embratel", codigo: 21, categoria: "Fixo"}
+				];
+				
+				$scope.adicionarContato = function (contato) {
+					$scope.contatos.push(contato);
+					delete $scope.contato;
+				}
+				
+				$scope.apagarContato = function (contatos) {
+					console.log(contatos);
+				}
+					
+			});
+		</script>
+		
+	</head>
+	
+	<body ng-controller="listaTelefonicaController">
+		<div class="jumbotron">
+			<h3>{{app}}</h3>
+			<table class="table table-striped table-hover">
+				<tr>
+					<th></th>
+					<th>Nome</th>
+					<th>Telefone</th>
+					<th>Operadora</th>
+				</tr>
+				<tr ng-class="{info: contato.selecionado, negrito: contato.selecionado}" ng-repeat="contato in contatos">
+					<td><input type="checkbox" ng-model="contato.selecionado"/></td>
+					<td>{{contato.nome}}</td>
+					<td>{{contato.telefone}}</td>
+					<td>{{contato.operadora.nome}}</td>
+				</tr>
+			</table>
+			<hr/>
+			<input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/> 
+			<input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+			<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras"> 
+				<option value="">Selecione uma operadora</option>
+			</select>
+			<button class="btn btn-primary btn-block"
+				ng-disabled="!contato.nome || !contato.telefone || !contato.operadora" 
+				ng-click="adicionarContato(contato)" >Adicionar Contato</button>
+			<button class="btn btn-danger btn-block"
+				ng-disabled="false" 
+				ng-click="apagarContato(contatos)" >Excluir Contato</button>
+		</div>
+		
+		<br/>
+		
+		<div class="breadcrumb">
+			<h4>Debug</h4>
+			Contato: {{contato}}
+			<br/>
+			Operadoras:	{{operadoras}}
+			<br/>
+			Contatos: {{contatos}}
+		</div>
+		
+		
+	</body>
+	
+</html>

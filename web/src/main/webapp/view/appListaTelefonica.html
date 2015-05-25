@@ -48,7 +48,7 @@
 			//	- ng-grid
 			//	- ng-animation
 			// ng-disabled - desabilita um elemento dinamicamente
-			// ng-options - renderiza as opções de um select num table
+			// ng-options - renderiza as opções de um select num table. O ng-options não existe sem o ng-model, pois sua principal função é criar opções que serão atribuidas à um ng-model depois de selecionadas por um select.
 			// ng-class e ng-style aplica dinamicamente classes e estilos css
 			//
 			
@@ -83,9 +83,20 @@
 				}
 				
 				$scope.apagarContato = function (contatos) {
-					console.log(contatos);
-				}
+	
+
+
+
 					
+				}
+
+				$scope.isContatoSelecioando = function (contatos) {
+					// o some irá retornar o valor true somente se a expressão (no caso, "contato.selecionado") for verdadeira. E a iteração em cima de 'contatos' é finalizada.
+					var contatoSelecioando = contatos.some(function (contato) {
+							return contato.selecionado;
+						});
+					return contatoSelecionado;
+				}
 			});
 		</script>
 		
@@ -118,7 +129,7 @@
 				ng-disabled="!contato.nome || !contato.telefone || !contato.operadora" 
 				ng-click="adicionarContato(contato)" >Adicionar Contato</button>
 			<button class="btn btn-danger btn-block"
-				ng-disabled="false" 
+				ng-disabled="!isContatoSelecionado(contatos)" 
 				ng-click="apagarContato(contatos)" >Excluir Contato</button>
 		</div>
 		

@@ -1,0 +1,25 @@
+<html ng-app="helloWord">
+	
+	<head>
+		<title>App AngularJS - Hello Word</title>
+		<script src="../lib/angular/angular.js"></script>
+		<script>
+			// O que é criado no AngularJS são módulos. Cria-se diversos módulos e atribui-se função à eles.
+			var app = angular.module("helloWord", []); 	// Cria o Módulo
+			angular.module("helloWord") 		// Localiza o módulo já criado, ou poderia ser referenciado através da variável 'app'.
+				.controller("helloWordController",	// Cria um Controler
+					function($scope) {				// Criar uma função para o Controller helloWordController e injeta o Scope dentro da função. o Scope é compartilhado dentre View e Controler.
+						$scope.mensagem = "Hello Word, AngularJS !!!"; // Cria uma variável chamada 'mensagem' dentro do Scope do Controller helloWordController.
+					}
+				); 	
+		</script>
+		
+	</head>
+	
+	<body>
+		<div ng-controller="helloWordController">
+			{{mensagem}}		
+		</div>
+	</body>
+	
+</html>

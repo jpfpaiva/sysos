@@ -1,0 +1,43 @@
+<html ng-app="listaTelefonica">
+	
+	<head>
+		<title>Lista Telefônica</title>
+		
+		<link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.css">
+		<style>
+		
+			.jumbotron {
+				width: 400px;
+				text-align: center;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.table {
+				margin-top: 20px;
+			}
+			
+		</style>
+		
+		<script src="../lib/angular/angular.js"></script>
+		<script>
+			var app = angular.module("listaTelefonica", []);
+			app
+				.controller("listaTelefonicaController",	
+					function($scope) {				
+						$scope.app = "Lista Telefônica";
+					}
+				);
+		</script>
+		
+	</head>
+	
+	<body ng-controller="listaTelefonicaController">
+		<div class="jumbotron">
+			<h4 ng-bind="app" />
+			<h4>{{app + ', exemplo de concatenação: ' + 2*4}}</h4>
+		</div>
+	</body>
+	
+</html>

@@ -1,0 +1,83 @@
+<html ng-app="listaTelefonica">
+	
+	<head>
+		<title>Lista Telefônica</title>
+		
+		<link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.css">
+		
+		<style>
+		
+			.jumbotron {
+				width: 400px;
+				padding: 48px 10;
+				text-align: center;
+				margin-top: 20px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.table {
+				margin-top: 20px;
+			}
+			
+			.form-control {
+				margin-bottom: 5px;
+			}
+			
+		</style>
+		
+		<script src="../lib/angular/angular.js"></script>
+		<script>
+			var app = angular.module("listaTelefonica", []);
+			app
+				.controller("listaTelefonicaController", function ($scope) {				
+					$scope.app = "Lista Telefônica";
+					$scope.contatos = [
+						{nome: "Daniel", telefone: "62 9981-6300"},
+						{nome: "Luciana", telefone: "62 9958-6300"},
+						{nome: "Guilherme", telefone: "62 9983-6300"}
+					];
+
+					$scope.adicionarContato = function (nome, telefone) {
+						$scope.contatos.push({nome: nome, telefone: telefone});
+					}	
+				});
+
+			// O ng-controller faz o vínculo entre a view e o controle. E dessa relação nasce o $scope
+			// O ng-route tem função parecida com o ng-controller.
+			// A View não é, necessariamente, um arquivo html. View, para o AngularJS, poder uma tag ou um conjunto de tag´s do html.
+			// O ng-bind substitui um elemento por uma expressão. Pega alguma coisa do scope e exibi
+			// O ng-repeat itera sobre os itens de uma coleção ou de um objeto
+			// O ng-model vincula uma propriedade ao $scope. Ele faz o inverso do ng-bind (controler->visão), pois o ng-bind é visão->controler
+			// 		Ou seja, o ng-model pega alguma coisa da view e define no scope, colocar no scope.
+			//		O ng-model é, basicamente, colocado nos input, select, textarea.
+			// Eventos
+			//		ng-clik
+			//		ng-blur
+			//		ng-focus
+			 	
+		</script>
+		
+	</head>
+	
+	<body ng-controller="listaTelefonicaController">
+		<div class="jumbotron">
+			<h3>{{app}}</h3>
+			<table class="table table-striped">
+				<tr>
+					<th>Nome</th>
+					<th>Telefone</th>
+				</tr>
+				<tr ng-repeat="contato in contatos">
+					<td>{{contato.nome}}</td>
+					<td>{{contato.telefone}}</td>
+				</tr>
+			</table>
+			<hr/>
+			<input class="form-control" type="text" ng-model="nome" placeholder="Nome"/> 
+			<input class="form-control" type="text" ng-model="telefone" placeholder="Telefone"/>
+			<button class="btn btn-primary btn-block" ng-click="adicionarContato(nome, telefone)" >Adicionar Contato</button>
+		</div>
+	</body>
+	
+</html>

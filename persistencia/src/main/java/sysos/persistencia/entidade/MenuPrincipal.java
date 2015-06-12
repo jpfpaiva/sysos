@@ -42,11 +42,6 @@ public class MenuPrincipal extends EntidadeJPA {
 	}
 
 	@Override
-	public Long getId() {
-		return id;
-	}
-
-	@Override
 	public String descricaoResumida() {
 		// TODO Auto-generated method stub
 		return null;

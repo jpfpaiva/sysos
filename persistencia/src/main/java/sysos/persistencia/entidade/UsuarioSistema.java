@@ -118,14 +118,13 @@ public class UsuarioSistema extends EntidadeJPA {
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
+	
+	public Long getId() {
+		return id;
+	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	@Override
-	public Long getId() {
-		return id;
 	}
 
 	@Override

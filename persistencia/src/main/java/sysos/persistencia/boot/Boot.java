@@ -46,11 +46,23 @@ public class Boot implements CommandLineRunner {
 		
 		MenuPrincipal menu = new MenuPrincipal("MenuAdminstrador");
 		menuDao.save(menu);
+
+		MenuPrincipal menu2 = new MenuPrincipal("MenuVendedor");
+		menuDao.save(menu2);
+		
+		MenuPrincipal menu3 = new MenuPrincipal("MenuEstoque");
+		menuDao.save(menu3);
 		
 		UsuarioSistema user = new UsuarioSistema("Daniel", "Sava Pupak", "123456" ,"danielsavas@gmail.com", menu);
 		userDao.save(user);
 		
-		for (UsuarioSistema u : userDao.findAll(qUser.nome.containsIgnoreCase("dan"))) {
+		UsuarioSistema user2 = new UsuarioSistema("Luciana", "Nunes Rocha", "123456" ,"luciananunesrocha@gmail.com", menu2);
+		userDao.save(user2);
+		
+		UsuarioSistema user3 = new UsuarioSistema("Marcio", "Sava Nunes", "123456" ,"marciosavanunes@gmail.com", menu3);
+		userDao.save(user3);
+		
+		for (UsuarioSistema u : userDao.findAll(qUser.nome.containsIgnoreCase("an"))) {
 			
 			System.out.println("\n\n Nome: " + u.getNome());
 			System.out.println(" SobreNome: " + u.getSobrenome());
@@ -68,12 +80,6 @@ public class Boot implements CommandLineRunner {
 			System.out.println(" Email: " + u.getEmail() + "\n\n");
 			
 		}
-		
-		
-		
-		
-		
-		
 		
 	}
 

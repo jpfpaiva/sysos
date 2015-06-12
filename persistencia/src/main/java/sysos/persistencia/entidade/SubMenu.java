@@ -17,7 +17,6 @@ public class SubMenu extends EntidadeJPA {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "ID")
 	private Long id;
 	
 	@Column(name= "NOME", nullable=false, unique=true)
@@ -40,11 +39,6 @@ public class SubMenu extends EntidadeJPA {
 	@JoinColumn(name="ID_SUBMENU")
 	private Set<ItemMenu> itens;
 	
-	@Override
-	public Long getId() {
-		return null;
-	}
-
 	public String getNome() {
 		return nome;
 	}

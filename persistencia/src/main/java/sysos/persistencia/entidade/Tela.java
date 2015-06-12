@@ -12,7 +12,6 @@ public class Tela extends EntidadeJPA {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "ID")
 	private Long id;
 	
 	@Column(name= "NOME", nullable=false, unique=true)
@@ -21,11 +20,6 @@ public class Tela extends EntidadeJPA {
 	@Column(name= "PATH", nullable=false, unique=true)
 	private String path;
 	
-	@Override
-	public Long getId() {
-		return id;
-	}
-
 	public String getNome() {
 		return nome;
 	}

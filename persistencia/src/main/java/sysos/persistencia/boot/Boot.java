@@ -12,7 +12,6 @@ import sysos.persistencia.config.SpringPersistenciaConfig;
 import sysos.persistencia.dao.MenuPrincipalDAO;
 import sysos.persistencia.dao.UsuarioSistemaDAO;
 import sysos.persistencia.entidade.MenuPrincipal;
-import sysos.persistencia.entidade.QUsuarioSistema;
 import sysos.persistencia.entidade.UsuarioSistema;
 
 
@@ -39,7 +38,7 @@ public class Boot implements CommandLineRunner {
 	@Autowired
 	MenuPrincipalDAO menuDao;
 	
-	static QUsuarioSistema qUser = QUsuarioSistema.usuarioSistema;
+	//static QUsuarioSistema qUser = QUsuarioSistema.usuarioSistema;
 	
 	@Transactional
 	void teste() {
@@ -62,24 +61,24 @@ public class Boot implements CommandLineRunner {
 		UsuarioSistema user3 = new UsuarioSistema("Marcio", "Sava Nunes", "123456" ,"marciosavanunes@gmail.com", menu3);
 		userDao.save(user3);
 		
-		for (UsuarioSistema u : userDao.findAll(qUser.nome.containsIgnoreCase("an"))) {
-			
-			System.out.println("\n\n Nome: " + u.getNome());
-			System.out.println(" SobreNome: " + u.getSobrenome());
-			System.out.println(" Senha: " + u.getSenhaHash());
-			System.out.println(" Email: " + u.getEmail() + "\n\n");
-			
-			
-			u.setSobrenome("Sava");
-			
-			userDao.save(u);
-			
-			System.out.println("\n\n Nome: " + u.getNome());
-			System.out.println(" SobreNome: " + u.getSobrenome());
-			System.out.println(" Senha: " + u.getSenhaHash());
-			System.out.println(" Email: " + u.getEmail() + "\n\n");
-			
-		}
+//		for (UsuarioSistema u : userDao.findAll(qUser.nome.containsIgnoreCase("an"))) {
+//			
+//			System.out.println("\n\n Nome: " + u.getNome());
+//			System.out.println(" SobreNome: " + u.getSobrenome());
+//			System.out.println(" Senha: " + u.getSenhaHash());
+//			System.out.println(" Email: " + u.getEmail() + "\n\n");
+//			
+//			
+//			u.setSobrenome("Sava");
+//			
+//			userDao.save(u);
+//			
+//			System.out.println("\n\n Nome: " + u.getNome());
+//			System.out.println(" SobreNome: " + u.getSobrenome());
+//			System.out.println(" Senha: " + u.getSenhaHash());
+//			System.out.println(" Email: " + u.getEmail() + "\n\n");
+//			
+//		}
 		
 	}
 

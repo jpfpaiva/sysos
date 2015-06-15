@@ -40,6 +40,20 @@
 	
 	<dependencies>
 	
+		<!-- Módulo Util -->
+		<dependency>
+			<groupId>paivaltda.app</groupId>
+			<artifactId>util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- PostgreSQL JDBC 4.1 / Java 1.7 e 1.8 -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1201-jdbc41</version>
+		</dependency>
+	
 		<!-- Configuração da JPA 2.0 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -77,20 +91,6 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.8.0.RELEASE</version>
-		</dependency>
-	
-		<!-- Módulo Util -->
-		<dependency>
-			<groupId>paivaltda.app</groupId>
-			<artifactId>util</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<!-- PostgreSQL JDBC 4.1 / Java 1.7 e 1.8 -->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.3-1101-jdbc41</version>
 		</dependency>
 	
 		<!-- QueryDSL -->
